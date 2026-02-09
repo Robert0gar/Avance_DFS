@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panadería</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Inventario de Panadería</h1>
+
+<form id="productForm" class="task-form">
+    <input type="text" id="name" placeholder="Nombre del pan" required>
+    <input type="number" id="price" placeholder="Precio" step="0.01" required>
+    <input type="number" id="stock" placeholder="Cantidad en inventario" required>
+    <button type="submit">Agregar pan</button>
+</form>
+
+<div id="ProductContainer">Cargando productos...</div>
+
+<div class="logout-container">
+    <button id="logoutBtn">Cerrar sesión</button>
+</div>
+
+<script src="products.js"></script>
+</body>
+</html>
