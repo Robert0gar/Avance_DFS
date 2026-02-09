@@ -9,9 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* ======================
-   CONEXIÓN A MYSQL
-====================== */
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -27,9 +24,6 @@ db.connect(err => {
     }
 });
 
-/* ======================
-   MIDDLEWARE JWT
-====================== */
 function verifyToken(req, res, next) {
     const authHeader = req.headers["authorization"];
 
@@ -48,9 +42,6 @@ function verifyToken(req, res, next) {
     });
 }
 
-/* ======================
-   AUTH - REGISTRO
-====================== */
 app.post("/api/register", (req, res) => {
     const { email, password } = req.body;
 
@@ -68,9 +59,6 @@ app.post("/api/register", (req, res) => {
     });
 });
 
-/* ======================
-   AUTH - LOGIN
-====================== */
 app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
 
@@ -99,11 +87,6 @@ app.post("/api/login", (req, res) => {
     });
 });
 
-/* ======================
-   PANADERÍA - PRODUCTS
-====================== */
-
-/* READ (público) */
 app.get("/api/products", (req, res) => {
     const query = "SELECT * FROM products ORDER BY created_at DESC";
 
@@ -113,7 +96,6 @@ app.get("/api/products", (req, res) => {
     });
 });
 
-/* CREATE (protegido) */
 app.post("/api/products", verifyToken, (req, res) => {
     const { name, price, stock } = req.body;
 
@@ -135,7 +117,6 @@ app.post("/api/products", verifyToken, (req, res) => {
     });
 });
 
-/* UPDATE (protegido) */
 app.put("/api/products/:id", verifyToken, (req, res) => {
     const { id } = req.params;
     const { name, price, stock } = req.body;
@@ -157,7 +138,6 @@ app.put("/api/products/:id", verifyToken, (req, res) => {
     });
 });
 
-/* DELETE (protegido) */
 app.delete("/api/products/:id", verifyToken, (req, res) => {
     const { id } = req.params;
 
@@ -174,17 +154,11 @@ app.delete("/api/products/:id", verifyToken, (req, res) => {
     });
 });
 
-/* ======================
-   MANEJO DE ERRORES
-====================== */
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: "Error interno del servidor" });
 });
 
-/* ======================
-   SERVIDOR
-====================== */
 app.listen(process.env.PORT, () => {
     console.log(`Servidor en http://localhost:${process.env.PORT}`);
 });
