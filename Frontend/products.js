@@ -22,6 +22,7 @@ function renderProducts(products) {
             <h3>${p.name}</h3>
             <p>Precio: $${p.price}</p>
             <p>Inventario: ${p.stock} piezas</p>
+            <button onclick="editProduct(${p.id}, '${p.name}', ${p.price}, ${p.stock})">Editar</button>
             <button onclick="deleteProduct(${p.id})">Eliminar</button>
         `;
         container.appendChild(div);
@@ -47,6 +48,29 @@ form.addEventListener("submit", async e => {
     form.reset();
     loadProducts();
 });
+
+async function editProduct(id, name, price, stock) {
+    const newName = prompt("Nombre del pan:", name);
+    const newPrice = prompt("Precio:", price);
+    const newStock = prompt("Inventario:", stock);
+
+    if (!newName || !newPrice || !newStock) return;
+
+    await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            name: newName,
+            price: newPrice,
+            stock: newStock
+        })
+    });
+
+    loadProducts();
+}
 
 async function deleteProduct(id) {
     await fetch(`${API_URL}/${id}`, {
