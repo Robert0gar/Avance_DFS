@@ -22,7 +22,7 @@ function Navbar() {
     }}>
       <div>
         <Link to="/" style={{ color: "white", textDecoration: "none", fontSize: "1.5rem", fontWeight: "bold" }}>
-          🍞 Panadería DFS
+          🍞 Panadería EL PALOMO
         </Link>
       </div>
 
