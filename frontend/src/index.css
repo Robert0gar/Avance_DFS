@@ -1,0 +1,17 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc; /* Color clarito de fondo */
+  color: #1e293b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: block; /* Quitamos el flex que centraba todo de forma rara */
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box; /* Para que el padding no rompa el ancho */
+}

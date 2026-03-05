@@ -1,0 +1,82 @@
+/* NAVBAR PRINCIPAL */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  padding: 15px 30px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* IZQUIERDA (TÍTULO) */
+.nav-left h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* CENTRO (LINKS) */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-center a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-center a:hover {
+  color: #38bdf8;
+}
+
+/* DERECHA (USUARIO + LOGOUT) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* BOTÓN LOGOUT */
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-center {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
